@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -11,6 +11,14 @@ def index():
 @app.route('/posts/<string:slug>/')
 def show(slug):
     return render_template("detalle.html", slug_title=slug)
+
+@app.route('/registro/', methods=["GET", "POST"])
+def registro():
+    if request.method == "POST":
+        name = request.form['name']
+        email = request.form['email']
+        password = request.form['password']
+    return render_template("registro.html")
 
 # Admin
 @app.route("/admin/post/")
