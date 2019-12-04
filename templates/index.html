@@ -3,5 +3,10 @@
 {% block title %} Tutorial Flask: Miniblog {% endblock  %}
 
 {% block content %}
-    {{ num_posts }} posts
+    <a href="{{ url_for('post_form') }}">[ Nueva entrada ]</a>
+    <ul>
+        {% for post in posts  %}
+            <li>{{ post.title }}</li>
+        {% endfor %}
+    </ul>
 {% endblock  %}
